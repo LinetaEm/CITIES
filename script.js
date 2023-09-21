@@ -368,6 +368,12 @@ function renderCities() {
             cityWrapper.style.backgroundColor = "lightgray";
         }
 
+        if (cities.length % 2 !== 0 && cityIndex === cities.length - 1) {
+            cityWrapper.style.width = '100%';
+        } else if (cityIndex % 2 !== 0) {
+            cityWrapper.style.width = '50%';
+        }
+
         if (cityIndex % 2 !== 0) {
             cityWrapper.style.width = '50%';
         }
