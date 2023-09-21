@@ -364,7 +364,7 @@ function renderCities() {
             cityName.style.color = "green";
         }
 
-        if (cityIndex % 2 === 1) { 
+        if (cityIndex % 2 === 0) { 
             cityWrapper.style.backgroundColor = "lightgray";
         }
 
@@ -374,7 +374,7 @@ function renderCities() {
             cityWrapper.style.width = '50%';
         }
 
-        if (cityIndex % 2 !== 0) {
+        if (cityIndex % 2 !== 1) {
             cityWrapper.style.width = '50%';
         }
 
