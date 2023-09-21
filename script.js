@@ -99,13 +99,13 @@ let cities = [
     isCapital: true
 },
 {
-    name: "La Pas",
-    population: 80000,
+    name: "La Paz",
+    population: 990000,
     location: {
     continent: "South America",
-    country: "Peru"
+    country: "Bolivia"
     },
-    touristAttractions: [],
+    touristAttractions: ["Museum", "Basilica", "Valle", "Rocks", "Market", "Parque" ],
     isCapital: false
 }
 ];
@@ -172,8 +172,16 @@ let cities = [
 //     let cityWrapper = document.createElement("div");
 //     cityWrapper.classList.add("city");
 
+//     let cityName = document.createElement("h2");
 //     if (city.isCapital) {
-//     city.name += " (capital)";
+//     cityName.textContent = `${city.name} (capital)`;
+//     } else {
+//     cityName.textContent = city.name;
+//     }
+
+//     cityWrapper.appendChild(cityName);
+
+//     if (city.isCapital) {
 //     let capitalDescription = document.createElement("p");
 //     capitalDescription.textContent = `${city.name} is the capital of ${city.location.country}`;
 //     cityWrapper.classList.add("capital");
@@ -189,6 +197,7 @@ let cities = [
 //     });
 //     cityWrapper.appendChild(attractionsList);
 //     }
+
 //     cityContainer.appendChild(cityWrapper);
 // });
 // }
@@ -207,23 +216,30 @@ let cities = [
 //     let cityWrapper = document.createElement("div");
 //     cityWrapper.classList.add("city");
 
+//     let cityName = document.createElement("h2");
 //     if (city.isCapital) {
-//     city.name += " (capital)";
-//     let capitalDescription = document.createElement("p");
-//     capitalDescription.textContent = `${city.name} is the capital of ${city.location.country}`;
-//     cityWrapper.classList.add("capital");
-//     cityWrapper.appendChild(capitalDescription);
+//     cityName.textContent = `${city.name} (capital)`;
+//     } else {
+//     cityName.textContent = city.name;
 //     }
+
+//     cityWrapper.appendChild(cityName);
+
+    // if (city.isCapital) {
+    // let capitalDescription = document.createElement("p");
+    // capitalDescription.textContent = `${city.name} is the capital of ${city.location.country}`;
+    // cityWrapper.classList.add("capital");
+    // cityWrapper.appendChild(capitalDescription);
+    // }
 
 //     if (city.touristAttractions.length > 0) {
 //     let attractionsList = document.createElement("ul");
-//     city.touristAttractions.forEach((attraction, index) => {
+//     city.touristAttractions.forEach((attraction) => {
 //         let listItem = document.createElement("li");
 //         listItem.textContent = attraction;
 //         attractionsList.appendChild(listItem);
 //     });
-
-//     let attractionText = "";
+// let attractionText = "";
 //     if (city.touristAttractions.length === 1) {
 //         attractionText = "Main Tourist attraction of";
 //     } else {
@@ -239,7 +255,6 @@ let cities = [
 //     }
 
 //     cityWrapper.appendChild(attractionDescription);
-
 //     cityWrapper.appendChild(attractionsList);
 //     }
 
@@ -256,19 +271,105 @@ let cities = [
 // 5.3. Pakeisti visų lankytinų vietų sąrašo pirmo nario spalvą į žalią.
 // 5.4. Pakeisti visų lankytinų vietų sąrašo paskutinių narių spalvą į raudoną, jeigu narių (lankytinų vietų) yra daugiau nei 3.
 
+// let cityContainer = document.querySelector("#cities");
+
+// function renderCities() {
+//     cities.forEach((city, cityIndex) => { 
+//         let cityWrapper = document.createElement("div");
+//         cityWrapper.classList.add("city");
+
+//         let cityName = document.createElement("h2");
+//         if (city.isCapital) {
+//             cityName.textContent = `${city.name} (capital)`;
+//         } else {
+//             cityName.textContent = city.name;
+//         }
+
+//         cityWrapper.appendChild(cityName);
+
+//         if (city.isCapital) {
+//             let capitalDescription = document.createElement("p");
+//             capitalDescription.textContent = `${city.name} is the capital of ${city.location.country}`;
+//             cityWrapper.classList.add("capital");
+//             cityWrapper.appendChild(capitalDescription);
+//             }
+
+//         if (city.isCapital) {
+//             cityName.style.color = "green";
+//         }
+
+//         if (cityIndex % 2 === 1) { 
+//             cityWrapper.style.backgroundColor = "lightgray";
+//         }
+
+//         if (city.touristAttractions.length > 0) {
+//             let attractionsList = document.createElement("ul");
+//             city.touristAttractions.forEach((attraction, attrIndex) => {
+//                 let listItem = document.createElement("li");
+//                 listItem.textContent = attraction;
+
+//                 if (attrIndex === 0) {
+//                     listItem.style.color = "green";
+//                 }
+
+//                 if (city.touristAttractions.length > 3 && attrIndex === city.touristAttractions.length - 1) {
+//                     listItem.style.color = "red";
+//                 }
+
+//                 attractionsList.appendChild(listItem);
+//             });
+
+//             let attractionText = city.touristAttractions.length === 1 ? "Main Tourist attraction of" : "Main Tourist attractions of";
+
+//             let attractionDescription = document.createElement("p");
+//             attractionDescription.textContent = `${attractionText} ${city.name} ${city.touristAttractions.length === 1 ? 'is' : 'are'}`;
+//             cityWrapper.appendChild(attractionDescription);
+//             cityWrapper.appendChild(attractionsList);
+//         }
+
+//         cityContainer.appendChild(cityWrapper);
+//     });
+// }
+
+// renderCities();
+
+
+// 6. Miestų plotis turi būti 50%.
+// 6.1. Jeigu miestų skaičius nėra porinis, tai paskutinio miesto plotis turi būti 100%.
+
 let cityContainer = document.querySelector("#cities");
 
 function renderCities() {
-    cities.forEach((city, index) => {
+    cities.forEach((city, cityIndex) => { 
         let cityWrapper = document.createElement("div");
         cityWrapper.classList.add("city");
 
+        let cityName = document.createElement("h2");
         if (city.isCapital) {
-            city.name += " (capital)";
+            cityName.textContent = `${city.name} (capital)`;
+        } else {
+            cityName.textContent = city.name;
+        }
+
+        cityWrapper.appendChild(cityName);
+
+        if (city.isCapital) {
             let capitalDescription = document.createElement("p");
             capitalDescription.textContent = `${city.name} is the capital of ${city.location.country}`;
             cityWrapper.classList.add("capital");
             cityWrapper.appendChild(capitalDescription);
+            }
+
+        if (city.isCapital) {
+            cityName.style.color = "green";
+        }
+
+        if (cityIndex % 2 === 1) { 
+            cityWrapper.style.backgroundColor = "lightgray";
+        }
+
+        if (cityIndex % 2 !== 0) {
+            cityWrapper.style.width = '50%';
         }
 
         if (city.touristAttractions.length > 0) {
@@ -276,15 +377,6 @@ function renderCities() {
             city.touristAttractions.forEach((attraction, attrIndex) => {
                 let listItem = document.createElement("li");
                 listItem.textContent = attraction;
-                attractionsList.appendChild(listItem);
-
-                if (city.isCapital) {
-                    listItem.style.color = "lightgreen";
-                }
-
-                if (index % 2 === 1) {
-                    cityWrapper.style.backgroundColor = "gray";
-                }
 
                 if (attrIndex === 0) {
                     listItem.style.color = "green";
@@ -293,25 +385,15 @@ function renderCities() {
                 if (city.touristAttractions.length > 3 && attrIndex === city.touristAttractions.length - 1) {
                     listItem.style.color = "red";
                 }
+
+                attractionsList.appendChild(listItem);
             });
 
-            let attractionText = "";
-            if (city.touristAttractions.length === 1) {
-                attractionText = "Main Tourist attraction of";
-            } else {
-                attractionText = "Main Tourist attractions of";
-            }
+            let attractionText = city.touristAttractions.length === 1 ? "Main Tourist attraction of" : "Main Tourist attractions of";
 
             let attractionDescription = document.createElement("p");
-
-            if (city.touristAttractions.length === 1) {
-                attractionDescription.textContent = `${attractionText} ${city.name} is`;
-            } else {
-                attractionDescription.textContent = `${attractionText} ${city.name} are`;
-            }
-
+            attractionDescription.textContent = `${attractionText} ${city.name} ${city.touristAttractions.length === 1 ? 'is' : 'are'}`;
             cityWrapper.appendChild(attractionDescription);
-
             cityWrapper.appendChild(attractionsList);
         }
 
@@ -320,8 +402,3 @@ function renderCities() {
 }
 
 renderCities();
-
-
-// 6. Miestų plotis turi būti 50%.
-// 6.1. Jeigu miestų skaičius nėra porinis, tai paskutinio miesto plotis turi būti 100%.
-
